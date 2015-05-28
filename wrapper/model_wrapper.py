@@ -14,7 +14,7 @@ class model_wrapper(base_wrapper,experiment_wrapper):
         self.wait_load = wait_load
         self.wait_short = wait_short
         self.verbose = verbose
-    def setup_model(self,data_name,target_colname,model_name,model_type = "Classification",dataset_folder = "My Datasets",elem_offset_y=15):
+    def setup_model(self,data_name,target_colname,model,dataset_folder = "My Datasets",elem_offset_y=15):
     
         self.report("deploying machinelearning model experiment")
         self.zoom_out()
@@ -35,7 +35,7 @@ class model_wrapper(base_wrapper,experiment_wrapper):
     
         data = _inplace_elem(self.deploy_dataset,data_name,dataset_folder)#0
     
-        cmodel = _inplace_elem(self.deploy_model,model_name,model_type)#1
+        cmodel = _inplace_elem(self.deploy_model,model.name,model.type)#1
         
         trainer = _inplace_elem(self.deploy_model_trainer)#2
         self.select_column(trainer,target_colname)

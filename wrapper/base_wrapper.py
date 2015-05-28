@@ -52,7 +52,7 @@ class base_wrapper:
 
         
     
-    def add_dataset_by_path(self,fileaddr,extension = ".csv",overwrite= False, change_name = False, new_name ="dataset.csv",wait_for_upload=True):
+    def add_dataset_by_path(self,fileaddr,extension = ".csv",overwrite= False, change_name = False, new_name ="dataset.csv",wait_for_upload=True,overwrite_on_fail = True):
         if self.driver.name == 'phantomjs':
             raise "This feature is yet not available in headless mode. Sorry."
         extensions = ["",".csv",".nh.csv",".tsv",".nh.tsv",".txt",".svmlight",".arff",".zip",".RData"]
@@ -102,7 +102,18 @@ class base_wrapper:
         except:
             pass
         if failure:
-            raise ValueError,"Couldnot create dataset. The cause must be that the name isn't unique or the parameters are invalid. Haven't you already uploaded it?"
+            if overwrite_on_fail and not overwrite:
+                self.report("could not add new dataset, trying to overwrite...")
+                self.add_dataset_by_path(fileaddr,extension,
+                                         overwrite=True,
+                                         change_name = change_name,
+                                         new_name = new_name,
+                                         wait_for_upload=wait_for_upload,
+                                         overwrite_on_fail= False
+                                         )
+                return
+            else:
+                raise ValueError,"Couldnot create dataset. The cause must be that the name isn't unique or the parameters are invalid. Haven't you already uploaded it?"
                 
         if wait_for_upload:
             self.report("waiting for file to upload")
@@ -177,5 +188,5 @@ class base_wrapper:
             self.report(error.info())
         
             self.report(json.loads(error.read()))
-            return "request fail"
+            raise ValueError, "Request failed"
 
