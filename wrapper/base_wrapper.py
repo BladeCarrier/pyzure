@@ -123,8 +123,14 @@ class base_wrapper:
         btn_new =_apply_until_passes(self.wait_load,self.driver.find_element_by_class_name,"fxs-drawertaskbar-newbutton-img")
         btn_new.click()
         
-        btn_blanc = _apply_until_passes(self.wait_load, self.driver.find_element_by_css_selector,".blank-icon")
-        btn_blanc.click()
+	while True:
+            btn_blanc = _apply_until_passes(self.wait_load, self.driver.find_element_by_css_selector,".blank-icon")
+            try:
+                btn_blanc.click()
+                break
+            except:pass
+
+        
         exp_name = self.driver.find_element_by_css_selector("#experiment-description")
         if experiment_name != None:
             time.sleep(self.wait_short)
