@@ -3,7 +3,7 @@ __doc__="""
 i configure some of the browsers to make them compatible with the wrapper
 """
 import selenium.webdriver as wd
-
+import os
 def phantomjs(path_to_binary):
     from selenium.webdriver.common.desired_capabilities import DesiredCapabilities    
     dcap = dict(DesiredCapabilities.PHANTOMJS)
@@ -40,6 +40,12 @@ def firefox_default():
     driver = wd.Firefox()
     driver.set_window_size(1124, 850)
     return driver
-
+def firefox():
+    """generic option that tries to raise firefox on any OS, perhaps even on  MACs"""
+    if os.name == 'nt':
+        driver = firefox_portable("FirefoxPortable/FirefoxPortable.exe")
+    else:
+        driver = firefox_default()
+    return driver
 
 

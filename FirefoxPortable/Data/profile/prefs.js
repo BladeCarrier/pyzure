@@ -76,3 +76,43 @@ user_pref("storage.vacuum.last.index", 0);
 user_pref("storage.vacuum.last.places.sqlite", 1431635613);
 user_pref("toolkit.startup.last_success", 1431635362);
 user_pref("toolkit.telemetry.previousBuildID", "20150402191859");
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);
+
+user_pref("browser.shell.checkDefaultBrowser", false);

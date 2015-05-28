@@ -87,9 +87,12 @@ class base_wrapper:
         
         if overwrite:
             checkbox_overwrite.click()
-            switch_type =  self.driver.find_element_by_css_selector("div.datalab-validation-wrapper:nth-child(4) > select:nth-child(3)")
-            select.Select(switch_type).select_by_index(extensions.index(extension))
-            time.sleep(self.wait_short)
+            name_selector = self.driver.find_element_by_css_selector("div.datalab-validation-wrapper:nth-child(1) > select:nth-child(4)")
+            name_selector.send_keys(new_name)
+        
+        switch_type =  self.driver.find_element_by_css_selector("div.datalab-validation-wrapper:nth-child(4) > select:nth-child(3)")
+        select.Select(switch_type).select_by_index(extensions.index(extension))
+        time.sleep(self.wait_short)
 
         tick_btn = self.driver.find_element_by_class_name("fx-dialog-ok")
         tick_btn.click()
@@ -160,8 +163,12 @@ class base_wrapper:
         if withColumns:
             inp_dict["ColumnNames"]= list(data.columns)
 
-        inp_dict["Values"]= [list([str(cell) for cell in data.irow(i)]) for i in xrange(len(data))]
-        
+        values= [[] for i in xrange(len(data))]
+        for icol in data.columns:
+            column = data[icol]
+            for irow in xrange(len(values)):
+                values[irow].append(str(column[irow]))
+        inp_dict["Values"]=values
                 
         data_json =  { "Inputs": {  "input1": inp_dict  }, "GlobalParameters": {}  }
 

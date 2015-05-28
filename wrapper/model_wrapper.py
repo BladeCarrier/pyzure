@@ -7,7 +7,12 @@ from base_wrapper import base_wrapper
 from experiment_wrapper import experiment_wrapper
 from auxilary import workspace_element, element_rectangle
 import time
-
+from collections import namedtuple
+Model = namedtuple("Model",["type","name","args"])
+class models:
+    rf = Model("Classification","Multiclass Decision Forest",{})
+    logReg = Model("Classification","Multiclass Logistic Regression",{})
+    jungle = Model("Classification","Multiclass Decision Jungle",{})
 class model_wrapper(base_wrapper,experiment_wrapper):
     def __init__(self,driver,wait_load = 3, wait_short = 1,verbose= 1):
         self.driver = driver
